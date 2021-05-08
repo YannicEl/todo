@@ -1,0 +1,15 @@
+{
+  "name": "ToDo",
+  "short_name": "ToDo",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "A simple ToDo app I made for myself but I guess everybody can use it.",
+  "icons": [
+    {
+      "src": "./icons/homescreen144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

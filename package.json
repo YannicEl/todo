@@ -19,6 +19,7 @@
     "typescript": "^4.2.4",
     "vite": "^2.2.3",
     "vite-plugin-components": "^0.9.0",
+    "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-windicss": "^0.16.0-beta.14",
     "vue-tsc": "^0.0.24"
   }
