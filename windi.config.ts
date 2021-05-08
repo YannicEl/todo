@@ -7,6 +7,13 @@ export default defineConfig({
     container: {
       center: true,
     },
+    colors: {
+      black: '#2C2C2C',
+      white: '#ffffff',
+      danger: '#ae1616 ',
+      blue: '#279AF1',
+      transparent: 'transparent',
+    },
     fontFamily: {
       sans: ['Open Sans', 'sans-serif'],
     },

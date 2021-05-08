@@ -13,3 +13,12 @@
   font-display: swap;
   src: url('./assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
 }
+
+* {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input[type='checkbox'] {
+  @apply text-blue rounded-md h-6 w-6 border-1 border-black bg-none bg-transparent transition-all ring-blue;
+}
