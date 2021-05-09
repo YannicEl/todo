@@ -4,6 +4,7 @@ export const manifest = {
   start_url: 'https://todo.yannic.tf/',
   display: 'standalone',
   background_color: '#ffffff',
+  theme_color: '#279AF1',
   description:
     'A simple ToDo app I made for myself but I guess everybody can use it.',
   icons: [
