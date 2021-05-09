@@ -26,6 +26,7 @@ export const manifest = {
       src: './icons/icon-256x256.png',
       sizes: '256x256',
       type: 'image/png',
+      purpose: 'any maskable',
     },
     {
       src: './icons/icon-512x512.png',
