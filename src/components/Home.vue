@@ -17,5 +17,4 @@ const tasks = store.state.tasks;
 const addTask = () => {
   store.commit("addTask")
 }
-
 </script>
