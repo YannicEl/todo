@@ -9,7 +9,7 @@
         v-for="task in task.subtasks"
         :key="task.id"
         :for="task.id"
-        class="flex items-center p-2 rounded-lg transition-all bg-blue bg-opacity-0 hover:bg-opacity-10 cursor-pointer ring-blue"
+        class="flex items-center p-2 rounded-lg transition-all bg-blue bg-opacity-0 hover:bg-opacity-10 cursor-pointer"
       >
         <input
           type="checkbox"
@@ -34,10 +34,9 @@ const props = defineProps({
     required: true
   }
 })
+const { task } = toRefs(props);
 
 const store = useStore()
-
-const { task } = toRefs(props);
 
 const remove = (taskId: string) => {
   store.commit("removeTask", taskId)

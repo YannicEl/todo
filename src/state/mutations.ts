@@ -4,24 +4,23 @@ import { Subtask, Task } from '../types/Task';
 import { State } from './State';
 
 export const mutations: MutationTree<State> = {
-  addTask(state: State) {
-    const subtasks: Subtask[] = [];
-
-    for (let i = 0; i < random(1, 5); i++) {
-      subtasks.push({
-        id: nanoid(),
-        completed: i % 2 === 0,
-        label: `Task ${i + 1}`,
-      });
-    }
-
-    const task: Task = {
+  addTask(
+    state: State,
+    task: { title: string; days: number; subtasks: string[] }
+  ) {
+    const subtasks: Subtask[] = task.subtasks.map((task) => ({
       id: nanoid(),
-      days: random(1, 678),
+      completed: false,
+      label: task,
+    }));
+
+    const ret: Task = {
+      id: nanoid(),
+      days: task.days,
       subtasks,
     };
 
-    state.tasks.push(task);
+    state.tasks.push(ret);
   },
   removeTask(state: State, taskId: string) {
     const index = state.tasks.findIndex((task) => task.id === taskId);
@@ -29,7 +28,10 @@ export const mutations: MutationTree<State> = {
 
     state.tasks.splice(index, 1);
   },
+  openModal(state: State) {
+    state.modalIsOpen = true;
+  },
+  closeModal(state: State) {
+    state.modalIsOpen = false;
+  },
 };
-
-const random = (min: number, max: number): number =>
-  Math.floor(Math.random() * (max - min)) + min;
