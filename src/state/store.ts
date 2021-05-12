@@ -11,7 +11,7 @@ export const store = createStore<State>({
   plugins: [createPersistedState(), createLogger()],
   state: {
     tasks: [],
-    addTaskIsOpen: false,
+    modalIsOpen: false,
   },
   mutations,
 });
