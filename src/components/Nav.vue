@@ -5,7 +5,7 @@
     </router-link>
 
     <div>
-      <router-link id="settings" to="settings" active-class="active">
+      <router-link id="settings" to="settings" active-class="active" aria-label="to settings">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
