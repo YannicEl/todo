@@ -3,12 +3,11 @@ import { createStore, Store, useStore as baseUseStore } from 'vuex';
 import { State } from './State';
 import { mutations } from './mutations';
 import createPersistedState from 'vuex-persistedstate';
-import { createLogger } from 'vuex';
 
 export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
-  plugins: [createPersistedState(), createLogger()],
+  plugins: [createPersistedState()],
   state: {
     tasks: [],
     modalIsOpen: false,

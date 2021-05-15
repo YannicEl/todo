@@ -1,5 +1,5 @@
 <template>
-  <div class="w-85 bg-blue-100 p-4 rounded-lg">
+  <div class="w-85 bg-white p-4">
     <div class="flex items-center justify-between">
       <button prim @click="prevMonth">&lt</button>
       <button prim @click="year--">-</button>
