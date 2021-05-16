@@ -28,8 +28,8 @@
       <div v-if="startWeekday > 0" :class="['col-span-' + startWeekday]"></div>
 
       <button
-        class="rounded-full transition-all hover:bg-gray-200 w-8 h-8 text-gray-700 grid place-items-center"
-        :class="{ 'bg-blue-400 text-white font-bold': selectedDate.getDate() === day }"
+        class="rounded-full  hover:bg-gray-200 w-8 h-8 text-gray-700 grid place-items-center"
+        :class="{ 'bg-blue-400 text-white font-bold': isSelectedDay(day) }"
         v-for="day in daysInMonth"
         :key="day"
         @click="input(day)"
@@ -99,5 +99,11 @@ const input = (day: number) => {
   selectedDate = date
   console.log(selectedDate)
   ctx.emit("input", date)
+}
+
+const isSelectedDay = (day: number) => {
+  return selectedDate.getFullYear() === year &&
+    selectedDate.getMonth() === month &&
+    selectedDate.getDate() === day
 }
 </script>
