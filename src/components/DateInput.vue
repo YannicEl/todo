@@ -29,7 +29,7 @@ ref: selectedDate = computed(() => {
   console.log()
   const date = modelValue?.value;
   if (date) {
-    return `${date.getDate()}.${date?.getMonth()}.${date?.getFullYear()}`
+    return `${date.getDate()}.${date?.getMonth() + 1}.${date?.getFullYear()}`
   } else {
     return ""
   }
