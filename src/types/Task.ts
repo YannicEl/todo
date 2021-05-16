@@ -1,6 +1,6 @@
 export interface Task {
   id: string;
-  days: number;
+  date: number;
   subtasks: Subtask[];
 }
 

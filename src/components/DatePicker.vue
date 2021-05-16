@@ -25,7 +25,7 @@
         class="bg-blue-200 rounded-full transition-all hover:bg-blue-400 w-10 h-10 text-white grid place-items-center"
         v-for="day in daysInMonth"
         :key="day"
-        @click="select(day)"
+        @click="input(day)"
       >{{ day }}</a>
     </div>
   </div>
@@ -75,6 +75,6 @@ const prevMonth = (): void => {
   }
 }
 
-// emit selected date
-const select = (day: number): void => ctx.emit("select", new Date(year, month, day))
+// emit input date
+const input = (day: number): void => ctx.emit("input", new Date(year, month, day))
 </script>

@@ -6,7 +6,7 @@ import { State } from './State';
 export const mutations: MutationTree<State> = {
   addTask(
     state: State,
-    task: { title: string; days: number; subtasks: string[] }
+    task: { title: string; date: Date; subtasks: string[] }
   ) {
     const subtasks: Subtask[] = task.subtasks.map(task => ({
       id: nanoid(),
@@ -16,7 +16,7 @@ export const mutations: MutationTree<State> = {
 
     const ret: Task = {
       id: nanoid(),
-      days: task.days,
+      date: task.date.getTime(),
       subtasks
     };
 

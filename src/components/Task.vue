@@ -1,8 +1,11 @@
 <template>
-  <div class="rounded-lg px-6 py-4 cursor-pointer transition-all shadow-md hover:shadow-lg">
-    <h1 class="text-2xl font-bold text-black">{{ task.days }} days</h1>
+  <div class="relative rounded-lg px-6 py-4 transition-all shadow-md hover:shadow-lg">
+    <button
+      class="absolute top-4 right-4 w-8 h-8 rounded-full text-red-600 transition-all hover:bg-red-200 grid place-items-center font-bold"
+      @click="remove(task.id)"
+    >X</button>
 
-    <button @click="remove(task.id)">remove</button>
+    <h1 class="text-2xl font-bold text-black">{{ daysLeft }} days left</h1>
 
     <form class="grid gap-3 mt-4">
       <label
@@ -25,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, toRefs } from 'vue';
+import { computed, defineProps, toRefs } from 'vue';
 import { useStore } from '../state/store';
 
 const props = defineProps({
@@ -35,6 +38,15 @@ const props = defineProps({
   }
 })
 const { task } = toRefs(props);
+
+ref: daysLeft = computed(() => {
+  const dueDate = new Date(task.value.date)
+  const now = new Date()
+
+  const diffMs = dueDate.getTime() - now.getTime()
+  const diffDays = diffMs / (24 * 60 * 60 * 1000)
+  return diffDays.toFixed()
+})
 
 const store = useStore()
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container h-200vh">
     <button prim @click="openModal">Open</button>
     <button prim @click="closeModal">Close</button>
 
@@ -7,6 +7,8 @@
       <!-- <DatePicker /> -->
       <AddTask />
     </Modal>
+
+    <DateInput />
   </div>
 </template>
 <script lang="ts" setup>
