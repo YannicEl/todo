@@ -49,7 +49,6 @@ ref: daysLeft = computed(() => {
 })
 
 const store = useStore()
-
 const remove = (taskId: string) => {
   store.commit("removeTask", taskId)
 }

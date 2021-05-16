@@ -12,7 +12,7 @@
           <!-- place modal at origin -->
           <div
             v-if="origin"
-            class="absolute z-1000 pointer-events-auto shadow-2xl rounded-lg overflow-hidden"
+            class="absolute z-1000 pointer-events-auto shadow rounded-lg overflow-hidden"
             :style="{ left: x + offsetX + 'px', top: y + offsetY + 'px' }"
           >
             <slot></slot>
@@ -21,7 +21,7 @@
           <!-- place modal in the center of the screen -->
           <div
             v-else="origin"
-            class="static z-1000 pointer-events-auto shadow-2xl rounded-lg overflow-hidden"
+            class="static z-1000 pointer-events-auto shadow rounded-lg overflow-hidden"
           >
             <slot></slot>
           </div>

@@ -1,32 +1,39 @@
 <template>
-  <div class="w-85 bg-white p-4">
+  <div class="w-76 bg-white p-4 select-none">
     <div class="flex items-center justify-between">
-      <button prim @click="prevMonth">&lt</button>
-      <button prim @click="year--">-</button>
-      <div>{{ monthStr }} {{ year }}</div>
-      <button prim @click="year++">+</button>
-      <button prim @click="nextMonth">&gt</button>
+      <div class="text-lg pl-2">
+        <span class="font-bold mr-4">{{ monthStr }}</span>
+        <span>{{ year }}</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <heroicons-solid:chevron-left
+          @click="prevMonth"
+          class="text-gray-400 text-2xl w-8 h-8 cursor-pointer rounded-full transition-all hover:bg-gray-200 mr-2"
+        />
+        <heroicons-solid:chevron-right
+          @click="nextMonth"
+          class="text-gray-400 text-2xl w-8 h-8 cursor-pointer rounded-full transition-all hover:bg-gray-200"
+        />
+      </div>
     </div>
 
-    <div class="grid gap-1 grid-cols-7 mt-2">
-      <!-- day labels -->
-      <span class="text-center">Mo</span>
-      <span class="text-center">Tu</span>
-      <span class="text-center">We</span>
-      <span class="text-center">Th</span>
-      <span class="text-center">Fr</span>
-      <span class="text-center">Sa</span>
-      <span class="text-center">So</span>
+    <!-- day labels -->
+    <div class="grid place-items-center grid-cols-7 mt-3">
+      <span v-for="day of weekdays" class="font-bold text-gray-900">{{ day }}</span>
+    </div>
 
+    <div class="grid gap-1 place-items-center grid-cols-7 mt-1">
       <!-- offset depending on the frst weekday -->
       <div v-if="startWeekday > 0" :class="['col-span-' + startWeekday]"></div>
 
-      <a
-        class="bg-blue-200 rounded-full transition-all hover:bg-blue-400 w-10 h-10 text-white grid place-items-center"
+      <button
+        class="rounded-full transition-all hover:bg-gray-200 w-8 h-8 text-gray-700 grid place-items-center"
+        :class="{ 'bg-blue-400 text-white font-bold': selectedDate.getDate() === day }"
         v-for="day in daysInMonth"
         :key="day"
         @click="input(day)"
-      >{{ day }}</a>
+      >{{ day }}</button>
     </div>
   </div>
 </template>
@@ -35,21 +42,32 @@
 import { computed, useContext } from "@vue/runtime-core";
 
 const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
+  "January",
+  "February",
+  "March",
+  "April",
   "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
+const weekdays = [
+  "Mo",
+  "Tu",
+  "We",
+  "Th",
+  "Fr",
+  "Sa",
+  "So",
 ]
 
 const ctx = useContext();
+ref: selectedDate = new Date()
 ref: year = new Date().getFullYear();
 ref: month = new Date().getMonth();
 ref: daysInMonth = computed(() => getDaysInMonth(year, month))
@@ -76,5 +94,10 @@ const prevMonth = (): void => {
 }
 
 // emit input date
-const input = (day: number): void => ctx.emit("input", new Date(year, month, day))
+const input = (day: number) => {
+  const date = new Date(year, month, day)
+  selectedDate = date
+  console.log(selectedDate)
+  ctx.emit("input", date)
+}
 </script>
