@@ -9,10 +9,9 @@ export const key: InjectionKey<Store<State>> = Symbol();
 export const store = createStore<State>({
   plugins: [createPersistedState()],
   state: {
-    tasks: [],
-    modalIsOpen: false,
+    tasks: []
   },
-  mutations,
+  mutations
 });
 
 // define your own `useStore` composition function

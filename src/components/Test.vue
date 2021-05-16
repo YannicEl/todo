@@ -10,7 +10,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-ref: modal
+ref: modal = undefined as any
 
 const openModal = () => modal.open()
 const closeModal = () => modal.close()
